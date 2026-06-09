@@ -255,9 +255,20 @@
             <i class="bi bi-phone-fill me-2" style="color:#4fc3f7"></i>
             Servicio <span class="brand-accent">Técnico</span>
         </a>
-        <a href="{{ route('reparaciones.create') }}" class="btn btn-nav-new ms-auto">
-            <i class="bi bi-plus-lg me-1"></i> Nueva Reparación
-        </a>
+        <div class="ms-auto d-flex align-items-center gap-3">
+            <span style="color:rgba(255,255,255,0.45); font-size:.85rem">
+                <i class="bi bi-person-circle me-1"></i>{{ Auth::user()->name }}
+            </span>
+            <a href="{{ route('reparaciones.create') }}" class="btn btn-nav-new">
+                <i class="bi bi-plus-lg me-1"></i> Nueva Reparación
+            </a>
+            <form method="POST" action="{{ route('logout') }}" class="m-0">
+                @csrf
+                <button type="submit" class="btn btn-sm" style="background:rgba(239,83,80,0.15); border:1px solid rgba(239,83,80,0.3); color:#ef9a9a; border-radius:8px; padding:8px 14px;">
+                    <i class="bi bi-box-arrow-right me-1"></i>Salir
+                </button>
+            </form>
+        </div>
     </div>
 </nav>
 
