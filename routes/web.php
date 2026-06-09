@@ -7,4 +7,4 @@ Route::get('/', function () {
     return redirect()->route('reparaciones.index');
 });
 
-Route::resource('reparaciones', ReparacionController::class);
+Route::resource('reparaciones', ReparacionController::class)->parameters(['reparaciones' => 'reparacion']);
