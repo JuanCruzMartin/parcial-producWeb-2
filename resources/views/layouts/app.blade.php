@@ -127,11 +127,13 @@
         .glass-table tbody tr:hover {
             background: rgba(255,255,255,0.07);
         }
-        .glass-table tbody td {
+        .glass-table tbody td,
+        .glass-table tbody td span,
+        .glass-table tbody td a {
             padding: 14px 16px;
             vertical-align: middle;
             border: none;
-            color: #ffffff;
+            color: #ffffff !important;
             font-weight: 500;
         }
 
