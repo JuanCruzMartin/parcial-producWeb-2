@@ -29,7 +29,7 @@
                         Reparación <span style="opacity:.8">#{{ $reparacion->id }}</span>
                     </h5>
                     <small class="text-white" style="opacity:.75">
-                        Registrada el {{ $reparacion->created_at->format('d/m/Y \a \l\a\s H:i') }}
+                        Registrada el {{ $reparacion->created_at ? $reparacion->created_at->format('d/m/Y \a \l\a\s H:i') : $reparacion->fecha_ingreso }}
                     </small>
                 </div>
                 <span class="badge-estado {{ $info['css'] }} fs-6">
