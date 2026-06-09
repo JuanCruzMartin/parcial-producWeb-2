@@ -123,9 +123,10 @@
         .glass-table tbody tr {
             border-bottom: 1px solid rgba(255,255,255,0.07);
             transition: background .15s;
+            background-color: transparent !important;
         }
         .glass-table tbody tr:hover {
-            background: rgba(255,255,255,0.07);
+            background-color: rgba(255,255,255,0.07) !important;
         }
         .glass-table tbody td,
         .glass-table tbody td span,
@@ -135,6 +136,7 @@
             border: none;
             color: #ffffff !important;
             font-weight: 500;
+            background-color: transparent !important;
         }
 
         /* ── BADGES ── */
