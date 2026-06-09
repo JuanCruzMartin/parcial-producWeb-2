@@ -6,103 +6,150 @@
     <title>Servicio Técnico de Celulares</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { font-family: 'Inter', sans-serif; }
 
         body {
-            background: #f0f2f5;
             min-height: 100vh;
+            background:
+                linear-gradient(135deg, rgba(10,10,30,0.92) 0%, rgba(5,5,20,0.95) 100%),
+                url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1920&q=80') center/cover fixed;
+            color: #e0e0e0;
         }
 
-        /* NAVBAR */
+        /* ── NAVBAR ── */
         .navbar {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+            background: rgba(255,255,255,0.04) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
             padding: 14px 0;
         }
         .navbar-brand {
             font-size: 1.3rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+            font-weight: 800;
             color: #fff !important;
+            letter-spacing: .5px;
         }
-        .navbar-brand span {
-            color: #4fc3f7;
-        }
+        .navbar-brand .brand-accent { color: #4fc3f7; }
         .btn-nav-new {
             background: linear-gradient(135deg, #4fc3f7, #0288d1);
             border: none;
             color: #fff;
             font-weight: 600;
-            border-radius: 8px;
-            padding: 8px 18px;
-            transition: all .2s;
+            border-radius: 10px;
+            padding: 9px 20px;
+            transition: all .25s;
+            box-shadow: 0 4px 15px rgba(79,195,247,0.3);
         }
         .btn-nav-new:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(79,195,247,0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79,195,247,0.5);
             color: #fff;
         }
 
-        /* CARDS */
-        .card {
-            border: none;
+        /* ── GLASS CARD ── */
+        .glass {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+        }
+        .glass-header {
+            border-radius: 18px 18px 0 0 !important;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 20px 26px;
+        }
+        .glass-body { padding: 28px; }
+        .glass-footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            border-radius: 0 0 18px 18px !important;
+            padding: 16px 26px;
+            background: rgba(0,0,0,0.15);
+        }
+
+        /* ── STAT CARDS ── */
+        .stat-card {
             border-radius: 16px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            padding: 20px 24px;
+            position: relative;
+            overflow: hidden;
+            transition: transform .2s, box-shadow .2s;
+            cursor: default;
         }
-        .card-header {
-            border-radius: 16px 16px 0 0 !important;
-            padding: 18px 24px;
-            border-bottom: none;
+        .stat-card:hover {
+            transform: translateY(-4px);
         }
-        .card-body { padding: 28px; }
-        .card-footer {
-            background: #f8f9fa;
-            border-radius: 0 0 16px 16px !important;
-            padding: 16px 24px;
-            border-top: 1px solid #eee;
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -30px; right: -30px;
+            width: 100px; height: 100px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+        }
+        .stat-card .stat-num {
+            font-size: 2.4rem;
+            font-weight: 800;
+            line-height: 1;
+            color: #fff;
+        }
+        .stat-card .stat-label {
+            font-size: .82rem;
+            color: rgba(255,255,255,0.75);
+            margin-top: 5px;
+            font-weight: 500;
+        }
+        .stat-card .stat-icon {
+            font-size: 2rem;
+            opacity: .25;
+            position: absolute;
+            bottom: 12px; right: 16px;
         }
 
-        /* TABLE */
-        .table thead th {
-            background: #1a1a2e;
-            color: #fff;
-            font-weight: 600;
-            font-size: .85rem;
+        /* ── TABLE ── */
+        .glass-table thead th {
+            background: rgba(255,255,255,0.07);
+            color: rgba(255,255,255,0.6);
+            font-size: .78rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: .5px;
+            letter-spacing: .8px;
             padding: 14px 16px;
             border: none;
         }
-        .table tbody tr {
+        .glass-table tbody tr {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             transition: background .15s;
         }
-        .table tbody tr:hover {
-            background: #e8f4fd;
+        .glass-table tbody tr:hover {
+            background: rgba(255,255,255,0.05);
         }
-        .table tbody td {
-            padding: 13px 16px;
+        .glass-table tbody td {
+            padding: 14px 16px;
             vertical-align: middle;
-            border-color: #f0f0f0;
+            border: none;
+            color: #ddd;
         }
 
-        /* BADGES */
+        /* ── BADGES ── */
         .badge-estado {
-            padding: 6px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: .8rem;
+            font-size: .78rem;
             font-weight: 600;
+            letter-spacing: .3px;
         }
-        .estado-ingresado    { background: #e3f2fd; color: #1565c0; }
-        .estado-reparacion   { background: #fff8e1; color: #e65100; }
-        .estado-reparado     { background: #e8f5e9; color: #2e7d32; }
-        .estado-entregado    { background: #f3e5f5; color: #6a1b9a; }
+        .estado-ingresado  { background: rgba(33,150,243,0.2);  color: #64b5f6; border: 1px solid rgba(33,150,243,0.3); }
+        .estado-reparacion { background: rgba(255,152,0,0.2);   color: #ffb74d; border: 1px solid rgba(255,152,0,0.3); }
+        .estado-reparado   { background: rgba(76,175,80,0.2);   color: #81c784; border: 1px solid rgba(76,175,80,0.3); }
+        .estado-entregado  { background: rgba(156,39,176,0.2);  color: #ce93d8; border: 1px solid rgba(156,39,176,0.3); }
 
-        /* BUTTONS */
+        /* ── ACTION BUTTONS ── */
         .btn-accion {
-            width: 34px;
-            height: 34px;
+            width: 34px; height: 34px;
             padding: 0;
             display: inline-flex;
             align-items: center;
@@ -110,66 +157,89 @@
             border-radius: 8px;
             font-size: .95rem;
             transition: all .15s;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #ccc;
         }
-        .btn-accion:hover { transform: translateY(-1px); }
+        .btn-accion:hover { transform: translateY(-2px); background: rgba(255,255,255,0.15); color: #fff; }
 
-        /* FORM */
+        /* ── FORMS ── */
         .form-control, .form-select {
+            background: rgba(255,255,255,0.07);
+            border: 1.5px solid rgba(255,255,255,0.12);
             border-radius: 10px;
-            border: 1.5px solid #e0e0e0;
-            padding: 10px 14px;
-            font-size: .95rem;
+            color: #fff;
+            padding: 11px 14px;
             transition: border-color .2s, box-shadow .2s;
         }
+        .form-control::placeholder { color: rgba(255,255,255,0.3); }
         .form-control:focus, .form-select:focus {
+            background: rgba(255,255,255,0.1);
             border-color: #4fc3f7;
-            box-shadow: 0 0 0 3px rgba(79,195,247,0.15);
+            box-shadow: 0 0 0 3px rgba(79,195,247,0.2);
+            color: #fff;
         }
+        .form-select option { background: #1a1a2e; color: #fff; }
         .form-label {
             font-weight: 600;
-            font-size: .88rem;
-            color: #444;
+            font-size: .85rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 7px;
+            text-transform: uppercase;
+            letter-spacing: .4px;
+        }
+        .input-group-text {
+            background: rgba(255,255,255,0.07);
+            border: 1.5px solid rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ── ALERT ── */
+        .alert-success {
+            background: rgba(76,175,80,0.15);
+            border: 1px solid rgba(76,175,80,0.3);
+            border-left: 4px solid #4caf50;
+            color: #81c784;
+            border-radius: 12px;
+        }
+
+        /* ── DETAIL BOXES ── */
+        .detail-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 16px 20px;
+        }
+        .detail-box .detail-label {
+            font-size: .72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .8px;
+            color: rgba(255,255,255,0.4);
             margin-bottom: 6px;
         }
-
-        /* ALERT */
-        .alert-success {
-            background: #e8f5e9;
-            border: none;
-            border-left: 4px solid #43a047;
-            color: #2e7d32;
-            border-radius: 10px;
+        .detail-box .detail-value {
+            font-size: 1.05rem;
             font-weight: 500;
-        }
-
-        /* PAGE TITLE */
-        .page-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #1a1a2e;
-        }
-        .page-subtitle {
-            color: #888;
-            font-size: .9rem;
-        }
-
-        /* STATS CARDS */
-        .stat-card {
-            border-radius: 14px;
-            padding: 18px 22px;
             color: #fff;
-            font-weight: 600;
         }
-        .stat-card .stat-num {
-            font-size: 2rem;
-            font-weight: 700;
-            line-height: 1;
-        }
-        .stat-card .stat-label {
-            font-size: .82rem;
-            opacity: .85;
-            margin-top: 4px;
-        }
+
+        /* ── PAGE TITLE ── */
+        .page-title { font-size: 1.5rem; font-weight: 700; color: #fff; }
+        .page-subtitle { color: rgba(255,255,255,0.4); font-size: .88rem; }
+
+        /* ── BACK LINK ── */
+        .back-link { color: rgba(255,255,255,0.5); text-decoration: none; font-size: .9rem; transition: color .2s; }
+        .back-link:hover { color: #4fc3f7; }
+
+        /* ── EMPTY STATE ── */
+        .empty-state i { font-size: 3.5rem; color: rgba(255,255,255,0.15); }
+        .empty-state p { color: rgba(255,255,255,0.4); }
+
+        /* scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
     </style>
 </head>
 <body>
@@ -178,7 +248,7 @@
     <div class="container">
         <a class="navbar-brand" href="{{ route('reparaciones.index') }}">
             <i class="bi bi-phone-fill me-2" style="color:#4fc3f7"></i>
-            Servicio <span>Técnico</span>
+            Servicio <span class="brand-accent">Técnico</span>
         </a>
         <a href="{{ route('reparaciones.create') }}" class="btn btn-nav-new ms-auto">
             <i class="bi bi-plus-lg me-1"></i> Nueva Reparación
@@ -190,7 +260,7 @@
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
             <i class="bi bi-check-circle-fill me-2"></i>{{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"></button>
         </div>
     @endif
 

@@ -5,30 +5,28 @@
     <div class="col-md-8">
 
         <div class="mb-3">
-            <a href="{{ route('reparaciones.index') }}" class="text-decoration-none text-muted">
+            <a href="{{ route('reparaciones.index') }}" class="back-link">
                 <i class="bi bi-arrow-left me-1"></i> Volver al listado
             </a>
         </div>
 
-        <div class="card">
-            <div class="card-header" style="background: linear-gradient(135deg,#1a1a2e,#16213e)">
-                <h5 class="mb-0 text-white">
+        <div class="glass">
+            <div class="glass-header" style="background: linear-gradient(135deg, rgba(79,195,247,0.2), rgba(2,136,209,0.15))">
+                <h5 class="mb-0" style="color:#fff; font-weight:700">
                     <i class="bi bi-plus-circle me-2" style="color:#4fc3f7"></i>
                     Nueva Reparación
                 </h5>
             </div>
-            <div class="card-body">
+            <div class="glass-body">
                 <form action="{{ route('reparaciones.store') }}" method="POST">
                     @csrf
 
                     <div class="mb-4">
                         <label class="form-label">Nombre del Cliente</label>
                         <div class="input-group">
-                            <span class="input-group-text bg-white border-end-0">
-                                <i class="bi bi-person text-muted"></i>
-                            </span>
+                            <span class="input-group-text"><i class="bi bi-person"></i></span>
                             <input type="text" name="nombre_cliente"
-                                   class="form-control border-start-0 @error('nombre_cliente') is-invalid @enderror"
+                                   class="form-control @error('nombre_cliente') is-invalid @enderror"
                                    value="{{ old('nombre_cliente') }}" placeholder="Ej: Juan Pérez">
                             @error('nombre_cliente')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -40,11 +38,9 @@
                         <div class="col-md-6 mb-4">
                             <label class="form-label">Marca</label>
                             <div class="input-group">
-                                <span class="input-group-text bg-white border-end-0">
-                                    <i class="bi bi-phone text-muted"></i>
-                                </span>
+                                <span class="input-group-text"><i class="bi bi-phone"></i></span>
                                 <input type="text" name="marca"
-                                       class="form-control border-start-0 @error('marca') is-invalid @enderror"
+                                       class="form-control @error('marca') is-invalid @enderror"
                                        value="{{ old('marca') }}" placeholder="Ej: Samsung">
                                 @error('marca')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -76,11 +72,9 @@
                         <div class="col-md-6 mb-4">
                             <label class="form-label">Fecha de Ingreso</label>
                             <div class="input-group">
-                                <span class="input-group-text bg-white border-end-0">
-                                    <i class="bi bi-calendar3 text-muted"></i>
-                                </span>
+                                <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
                                 <input type="date" name="fecha_ingreso"
-                                       class="form-control border-start-0 @error('fecha_ingreso') is-invalid @enderror"
+                                       class="form-control @error('fecha_ingreso') is-invalid @enderror"
                                        value="{{ old('fecha_ingreso', date('Y-m-d')) }}">
                                 @error('fecha_ingreso')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -103,11 +97,11 @@
                         </div>
                     </div>
 
-                    <div class="d-flex gap-2 pt-2 border-top mt-2">
-                        <button type="submit" class="btn btn-primary px-4">
+                    <div class="d-flex gap-2 pt-3" style="border-top: 1px solid rgba(255,255,255,0.08)">
+                        <button type="submit" class="btn btn-nav-new px-4">
                             <i class="bi bi-save me-1"></i> Guardar
                         </button>
-                        <a href="{{ route('reparaciones.index') }}" class="btn btn-outline-secondary px-4">
+                        <a href="{{ route('reparaciones.index') }}" class="btn btn-accion px-4" style="width:auto">
                             Cancelar
                         </a>
                     </div>
