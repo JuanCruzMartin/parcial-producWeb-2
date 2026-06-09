@@ -111,8 +111,8 @@
 
         /* ── TABLE ── */
         .glass-table thead th {
-            background: rgba(255,255,255,0.07);
-            color: rgba(255,255,255,0.6);
+            background: rgba(255,255,255,0.1);
+            color: #ffffff;
             font-size: .78rem;
             font-weight: 700;
             text-transform: uppercase;
@@ -121,17 +121,18 @@
             border: none;
         }
         .glass-table tbody tr {
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
             transition: background .15s;
         }
         .glass-table tbody tr:hover {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.07);
         }
         .glass-table tbody td {
             padding: 14px 16px;
             vertical-align: middle;
             border: none;
-            color: #ddd;
+            color: #ffffff;
+            font-weight: 500;
         }
 
         /* ── BADGES ── */

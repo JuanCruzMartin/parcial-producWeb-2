@@ -109,14 +109,14 @@
                     $clase = $clases[$rep->estado] ?? 'estado-ingresado';
                 @endphp
                 <tr>
-                    <td><span style="color:rgba(255,255,255,0.3);font-weight:700">#{{ $rep->id }}</span></td>
+                    <td><span style="color:rgba(255,255,255,0.5);font-weight:700">#{{ $rep->id }}</span></td>
                     <td><span class="fw-semibold" style="color:#fff">{{ $rep->nombre_cliente }}</span></td>
                     <td>
                         <span class="fw-semibold" style="color:#fff">{{ $rep->marca }}</span>
-                        <span style="color:rgba(255,255,255,0.4)"> · {{ $rep->modelo }}</span>
+                        <span style="color:rgba(255,255,255,0.7)"> · {{ $rep->modelo }}</span>
                     </td>
-                    <td>
-                        <i class="bi bi-calendar3 me-1" style="color:rgba(255,255,255,0.3)"></i>
+                    <td style="color:#fff">
+                        <i class="bi bi-calendar3 me-1" style="color:rgba(255,255,255,0.6)"></i>
                         {{ \Carbon\Carbon::parse($rep->fecha_ingreso)->format('d/m/Y') }}
                     </td>
                     <td><span class="badge-estado {{ $clase }}">{{ $rep->estado }}</span></td>
